@@ -1,0 +1,87 @@
+[
+    {
+        "key": "C",
+        "type": "character",
+        "space": 2
+    },
+    {
+        "key": "Del",
+        "type": "character",
+        "space": 1
+    },
+    {
+        "key": "divide",
+        "type": "icons",
+        "space": 1
+    },
+    {
+        "key": "7",
+        "type": "character",
+        "space": 1
+    },
+    {
+        "key": "8",
+        "type": "character",
+        "space": 1
+    },
+    {
+        "key": "9",
+        "type": "character",
+        "space": 1
+    },
+    {
+        "key": "times",
+        "type": "icons",
+        "space": 1
+    },
+    {
+        "key": "4",
+        "type": "character",
+        "space": 1
+    },
+    {
+        "key": "5",
+        "type": "character",
+        "space": 1
+    },
+    {
+        "key": "6",
+        "type": "character",
+        "space": 1
+    },
+    {
+        "key": "minus",
+        "type": "icons",
+        "space": 1
+    },
+    {
+        "key": "1",
+        "type": "character",
+        "space": 1
+    },
+    {
+        "key": "2",
+        "type": "character",
+        "space": 1
+    },
+    {
+        "key": "3",
+        "type": "character",
+        "space": 1
+    },
+    {
+        "key": "plus",
+        "type": "icons",
+        "space": 1
+    },
+    {
+        "key": "0",
+        "type": "character",
+        "space": 2
+    },
+    {
+        "key": "equals",
+        "type": "icons",
+        "space": 2
+    }
+]
