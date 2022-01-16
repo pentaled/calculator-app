@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Container, Buttons } from './components/Buttons'
+import keypad from './keypad.json'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faBackspace, faDivide, faTimes, faMinus, faPlus, faEquals} from '@fortawesome/free-solid-svg-icons'
+library.add( faBackspace, faDivide, faTimes, faMinus, faPlus, faEquals )
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Container title="">
+      <Buttons data={keypad} />
+    </Container>
+  )
 }
 
 export default App;
