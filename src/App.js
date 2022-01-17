@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Buttons } from './components/Buttons'
+import Container from './components/Calculator'
+import Buttons from './components/Buttons/Keypad'
 import keypad from './keypad.json'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBackspace, faDivide, faTimes, faMinus, faPlus, faEquals} from '@fortawesome/free-solid-svg-icons'
@@ -8,7 +9,7 @@ library.add( faBackspace, faDivide, faTimes, faMinus, faPlus, faEquals )
 const App = () => {
   return (
     <Container title="">
-      <Buttons data={keypad} />
+      <Buttons input={keypad, library}/>
     </Container>
   )
 }

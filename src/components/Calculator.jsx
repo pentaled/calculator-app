@@ -1,31 +1,21 @@
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-const Wrapper = styled.div`
-    position: relative;
-    width: 360px;
-    margin: 20px auto 0;
-    border: 1px solid #000;
-    border-radius: 22px;
-    min-height: 760px;
-    padding: 14px;
-    hidden: scroll;
-`
-
-const PaperTitle = styled.h3`
-    margin-top: 20px;
-    margin-left: 7.5px;
-    font-size: 25px;
+const Frame = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 5px 12px;
 `
 
 const Container = ({ title, children }) => {
     return (
-        <Wrapper>
+        <Frame>
             <PaperTitle>
                 {title}
             </PaperTitle>
             {children}
-        </Wrapper>
+        </Frame>
     )
 }
 
