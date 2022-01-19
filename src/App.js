@@ -1,22 +1,25 @@
-import React from 'react';
-import Container from './Calculator'
-import Buttons from './Keypad'
-import ResultScreen from './ResultScreen'
-import keypad from './keypad.json'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faBackspace, faDivide, faTimes, faMinus, faPlus, faEquals} from '@fortawesome/free-solid-svg-icons'
-library.add( faBackspace, faDivide, faTimes, faMinus, faPlus, faEquals )
+import React, { useState, useEffect } from 'react';
+import { Container, List } from './components/List'
+import mockData from './mock-data'
+
+// react hook - state hook or effect hook
 
 const App = () => {
+  const [dataList, setDataList] = useState([]);
+  // react cycle - componenetDidMount
+  useEffect(() => {
+    const filtered = mockData.filter(item => item.status === "NEW")
+    setDataList(filtered)
+  }, []) //array is not empty, componentDidUpdate
+
   return (
-    <Container title={ResultScreen}>
-      <Buttons input={keypad, library}/>
+    <Container title="My List">
+      <List data={dataList} />
     </Container>
   )
 }
 
 export default App;
-
 //display: flex;
 //    flex-direction: row;
 //    flex-wrap: wrap;
