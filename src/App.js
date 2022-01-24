@@ -10,9 +10,11 @@ library.add( faBackspace, faDivide, faTimes, faMinus, faPlus, faEquals )
 // react hook - state hook or effect hook
 
 const App = () => {
-  <Container title="calculator">
-    <Buttons data={keypad}/>
-  </Container>
+  return (
+    <Container title="calculator">
+      <Buttons data={keypad}/>
+    </Container>
+  )
 }
 
 export default App;
