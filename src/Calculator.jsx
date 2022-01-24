@@ -2,36 +2,64 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 const Frame = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 0 5px 12px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    margin: 20px auto 0;
+    border: 1px solid #000;
+    border-radius: 15px;
+    height: 625px;
+    border-color: #bdbdbd;
+    padding: 14px;
+    hidden: scroll;
 `
-
 const FrameResult = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 0 5px 12px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 360px;
+    margin: 7px auto 0;
+    height: 65px;
+    padding: 14px;
+    hidden: scroll;
+    text-align: right;
+    font-size: 65px;
+    font-family: Arial;
 `
 
-const Container = ({ title, children }) => {
+const FrameButton = styled.div`
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 360px;
+    margin: 7.5px auto 0;
+    height: 65px;
+    padding: 14px;
+    hidden: scroll;
+    text-align: right;
+    font-size: 65px;
+    font-family: Arial;
+`
+const Calculator = ({ result, button }) => {
     return (
         <Frame>
             <FrameResult>
-                {title}
+                {result}
             </FrameResult>
-            {children}
+            <FrameButton>
+                {button}
+            </FrameButton>
         </Frame>
     )
 }
 
-Container.defaultProps = {
-    title: "Default List"
+Calculator.defaultProps = {
+    result: "Default List"
 }
-Container.propTypes = {
-    title: PropTypes.string.isRequired,
-    children: PropTypes.node
+Calculator.propTypes = {
+    result: PropTypes.string.isRequired,
+    button: PropTypes.node
 }
 
-export default Container
+export default Calculator
