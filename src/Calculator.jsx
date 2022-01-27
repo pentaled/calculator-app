@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-const Frame = styled.div`
+const FrameCalculator = styled.div`
     position: relative;
     justify-content: center;
     align-items: center;
@@ -9,6 +9,7 @@ const Frame = styled.div`
     margin: 20px auto 0;
     border: 1px solid #000;
     border-radius: 15px;
+    border-width: 2px;
     height: 625px;
     border-color: #bdbdbd;
     padding: 14px;
@@ -43,14 +44,14 @@ const FrameButton = styled.div`
 `
 const Calculator = ({ result, button }) => {
     return (
-        <Frame>
+        <FrameCalculator>
             <FrameResult>
                 {result}
             </FrameResult>
             <FrameButton>
                 {button}
             </FrameButton>
-        </Frame>
+        </FrameCalculator>
     )
 }
 

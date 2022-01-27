@@ -39,8 +39,8 @@ const Keypad = ({ item }) => {
 
 Keypad.propTypes = {
     item: PropTypes.shape({
-        key: PropTypes.string.isRequired,
-        type: PropTypes.string.isRequired,
+        key: PropTypes.string,
+        type: PropTypes.string,
         space: PropTypes.string
     })
 }
