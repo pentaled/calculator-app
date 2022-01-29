@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Buttons from './keypad.json'
 
 const NumPad = styled.div`
     text-align: center;
@@ -24,15 +25,24 @@ const NumPad = styled.div`
 `
 
 const Keypad = ({ item }) => {
+    const createKeypad = (key, type) => {
+        Buttons.map((item) => {
+            if (key === item.key) {
+                item.type = type 
+            }
+            return item
+        })
+    }
+    
     if (item.type === 'icons') {
         return (
-            <NumPad type="primary" shape="circle" space={item.space} background={item.type === "character"}>
-                <FontAwesomeIcon icon={item.key} />
+            <NumPad type="primary" shape="circle" space={item.space} background={item.type === "character"}createKeypad={createKeypad}>
+                <FontAwesomeIcon icon={item.key} createKeypad={createKeypad}/>
             </NumPad>
         )
     } else {
         return (
-            <NumPad type="primary" shape="circle" space={item.space} background={item.type === "character"}>{item.key}</NumPad>
+            <NumPad type="primary" shape="circle" space={item.space} background={item.type === "character"} createKeypad={createKeypad}>{item.key}</NumPad>
         )
     }
 }
