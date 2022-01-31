@@ -1,17 +1,22 @@
-import React from 'react';
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 const Wrapper = styled.div`
-    margin: 20px 10px;
-    height: 10px;
-    width: 10px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 600Spx;
+    padding: 14px;
+    margin: 20px auto 0;
     border: 1px solid #000;
     border-radius: 15px;
-    border-width: 2px;
+    border-width: 10px;
+    border-color: #000;
+    hidden: scroll;
 `
 
-const Calculator = ({ result }) => {
+const ResultScreen = ({ result }) => {
     return (
         <Wrapper>
             {result}
@@ -19,11 +24,11 @@ const Calculator = ({ result }) => {
     )
 }
 
-Calculator.defaultProps = {
+ResultScreen.defaultProps = {
     result: "Default List"
 }
-Calculator.propTypes = {
+ResultScreen.propTypes = {
     result: PropTypes.string.isRequired,
 }
 
-export default Calculator
+export default ResultScreen
