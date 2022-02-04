@@ -22,9 +22,6 @@ const FrameContent = styled.div`
     width: 365px;
     height: 592.5px;
     margin: 2.5px auto 0;
-    border: 1px solid #000;
-    border-width: 2px;
-    border-color: #bdbdbd;
     padding: 14px;
     hidden: scroll;
     text-align: right;
@@ -41,7 +38,7 @@ const Calculator = ({ result, content }) => {
             {content}
         </FrameCalculator>
     )
-}
+}  
 
 Calculator.defaultProps = {
     result: "Error"
