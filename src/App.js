@@ -9,8 +9,8 @@ library.add( faBackspace, faDivide, faTimes, faMinus, faPlus, faEquals )
 const App = () => {
   return (
     <Calculator result="0">
-      {data.map((user) => (
-        <Keypad content="user">{user}</Keypad>
+      {data.map((item) => (
+        <Keypad key={item.toString()}>{item}</Keypad>
       ))}
     </Calculator>
   )
