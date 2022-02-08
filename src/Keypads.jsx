@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const NumPad = styled.div`
     text-align: center;
@@ -23,18 +22,7 @@ const NumPad = styled.div`
     }
 `
 
-const Keypad = ({ item }) => {
-    if (item.type === 'icons') {
-        return (
-            <NumPad type="primary" shape="circle" space={item.space} background={item.type === "character"}>
-                <FontAwesomeIcon icon={item.key}/>
-            </NumPad>
-        )
-    } else {
-        return (
-            <NumPad type="primary" shape="circle" space={item.space} background={item.type === "character"}>{item.key}</NumPad>
-        )
-    }
+const Keypad = ({ props }) => {
 }
 
 Keypad.propTypes = {
