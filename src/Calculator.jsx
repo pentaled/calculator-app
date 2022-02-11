@@ -5,8 +5,8 @@ const FrameCalculator = styled.div`
     position: relative;
     justify-content: center;
     align-items: center;
-    width: 400px;
-    height: 625px;
+    width: 370px;
+    height: 520px;
     padding: 14px;
     margin: 20px auto 0;
     border: 1px solid #000;
@@ -19,9 +19,13 @@ const FrameContent = styled.div`
     position: relative;
     justify-content: center;
     align-items: center;
-    width: 365px;
-    height: 592.5px;
-    margin: 2.5px auto 0;
+    width: 340px;
+    border: 1px solid #000;
+    border-radius: 15px;
+    border-width: 2px;
+    border-color: #000000;
+    height: 490px;
+    margin: 0px auto 0;
     padding: 14px;
     hidden: scroll;
     text-align: right;
@@ -29,11 +33,11 @@ const FrameContent = styled.div`
     font-family: Arial;
 `
 
-const Calculator = ({ result, content }) => {
+const Calculator = ({ title, content }) => {
     return (
         <FrameCalculator>
             <FrameContent>
-                {result}
+                {title}
             </FrameContent>
             {content}
         </FrameCalculator>
@@ -41,11 +45,11 @@ const Calculator = ({ result, content }) => {
 }  
 
 Calculator.defaultProps = {
-    result: "Error"
+    title: "Error"
 }
 
 Calculator.propTypes = {
-    result: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     content: PropTypes.node
 }
 

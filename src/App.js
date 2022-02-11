@@ -8,9 +8,9 @@ library.add( faBackspace, faDivide, faTimes, faMinus, faPlus, faEquals )
 
 const App = () => {
   return (
-    <Calculator result="0">
+    <Calculator title="0">
       {data.map((item) => (
-        <Keypad key={item.toString()}>{item}</Keypad>
+        <Keypad key={item}></Keypad>
       ))}
     </Calculator>
   )
@@ -18,4 +18,6 @@ const App = () => {
 
 export default App;
 
-
+//Check the following:
+//1. If you want to show the content between a react tag, you need to use “children”
+//3. How do you pass the item to the  Keypad component
