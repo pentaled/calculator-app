@@ -6,11 +6,11 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBackspace, faDivide, faTimes, faMinus, faPlus, faEquals } from '@fortawesome/free-solid-svg-icons'
 library.add( faBackspace, faDivide, faTimes, faMinus, faPlus, faEquals )
 
-const App = () => {
+const App = (props) => {
   return (
     <Calculator title="0">
       {data.map((item) => (
-        <Keypad key={item}></Keypad>
+        <Keypad key={item}>{props.children}</Keypad>
       ))}
     </Calculator>
   )

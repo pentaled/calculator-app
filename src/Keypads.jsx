@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const NumPad = styled.div`
     text-align: center;
-    width: ${props => props.spave === 2 ? '170px' : '80px'};
+    width: ${props => props.space === 2 ? '170px' : '80px'};
     height:80px;
     font-size: 26px;
     min-width: ${props => props.space === 2 ? '170px' : '80px'};

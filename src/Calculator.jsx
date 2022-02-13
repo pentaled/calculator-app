@@ -20,10 +20,6 @@ const FrameContent = styled.div`
     justify-content: center;
     align-items: center;
     width: 340px;
-    border: 1px solid #000;
-    border-radius: 15px;
-    border-width: 2px;
-    border-color: #000000;
     height: 490px;
     margin: 0px auto 0;
     padding: 14px;
