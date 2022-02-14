@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -23,11 +24,13 @@ const NumPad = styled.div`
     }
 `
 
-const Keypad = ({ item }) => {
+const Keypad = ( item ) => {
+    console.log(item)
     if (item.type === 'icons') {
-        return (
-            <NumPad type="primary" shape="circle" space={item.space} background={item.type === "character"}>
+        return ( 
+            <NumPad key={item.key} type="primary" shape="circle" space={item.space} background={item.type === "character"}>
                 <FontAwesomeIcon icon={item.key}/>
+                <NumPad>{item.key}</NumPad>
             </NumPad>
         )
     } else {
@@ -37,12 +40,13 @@ const Keypad = ({ item }) => {
     }
 }
 
+const element = <NumPad key="divide"></NumPad>
 Keypad.propTypes = {
     item: PropTypes.shape({
-        key: PropTypes.string,
+        key: PropTypes.string.isRequired,
         type: PropTypes.string,
         space: PropTypes.string
     })
 }
-
+  
 export default Keypad;
