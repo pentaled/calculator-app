@@ -10,7 +10,7 @@ const App = () => {
   return (
     <Calculator title="0">
       {Keydata.map((item) => (
-        <Keypad key={item.key} />
+        <Keypad key={item.key} item={item}/>
       ))}
     </Calculator>
   )
@@ -24,6 +24,3 @@ export default App;
 
 // Number 2: App.js
 // How do you pass the "item" props to Keypad. Check the todo app and see you pass "item" from List.jsx to ListItem.jsx
-
-// Number 3: Keypads.jsx
-// Check how you import the "item", you have missing curcly bracket. Check ListItem.jsx from the todo app.
