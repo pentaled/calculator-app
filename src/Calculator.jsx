@@ -5,44 +5,46 @@ const FrameCalculator = styled.div`
     position: relative;
     justify-content: center;
     align-items: center;
-    width: 370px;
-    height: 520px;
+    width: 360px;
+    height: 555px;
     padding: 14px;
     margin: 20px auto 0;
     border: 1px solid #000;
     border-radius: 15px;
     border-width: 2px;
-    border-color: #bdbdbd;
+    border-color: #dedcdc;
     hidden: scroll;
 `
 const FrameContent = styled.div`
     display: flex;
+    flex-flow: wrap;
     position: relative;
-    justify-content: flex-start;
-    align-items: flex-start;
-    align-conent: center;
+    justify-content: left;
+    align-items: left;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    border-width: 2px;
     width: 370px;
-    height: 416px;
+    height: 434px;
     padding: 14px;
     margin: -16px;
-    margin-top: 2.5px;
+    margin-top: -2.5px;
     hidden: scroll;
-    text-align: right;
-    font-size: 65px;
-    font-family: Arial;
 `
 
 const FrameResult = styled.div`
     position: relative;
     justify-content: center;
     align-items: center;
-    width: 370px;
-    height: 74px;
+    width: 333px;
+    height: 80px;
     padding: 14px;
+    padding-bottom: 10px;
+    padding-top: 30px;
     margin: -16px;
     hidden: scroll;
     text-align: right;
-    font-size: 65px;
+    font-size: 55px;
     font-family: Arial;
 `
 const Calculator = ({ title, children }) => {
