@@ -5,8 +5,8 @@ const FrameCalculator = styled.div`
     position: relative;
     justify-content: center;
     align-items: center;
-    width: 360px;
-    height: 555px;
+    width: 347px;
+    height: 550px;
     padding: 14px;
     margin: 20px auto 0;
     border: 1px solid #000;
@@ -27,7 +27,7 @@ const FrameContent = styled.div`
     width: 370px;
     height: 434px;
     padding: 14px;
-    margin: -16px;
+    margin: -22px;
     margin-top: -2.5px;
     hidden: scroll;
 `
@@ -36,16 +36,17 @@ const FrameResult = styled.div`
     position: relative;
     justify-content: center;
     align-items: center;
-    width: 333px;
+    width: 325px;
     height: 80px;
     padding: 14px;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
     padding-top: 30px;
     margin: -16px;
     hidden: scroll;
     text-align: right;
     font-size: 55px;
     font-family: Arial;
+    letter-spacing: 2px;
 `
 const Calculator = ({ title, children }) => {
     return (

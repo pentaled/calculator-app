@@ -24,15 +24,21 @@ const NumPad = styled.div`
 `
 
 const Keypad = ({ item }) => {
+    const active = () => {
+        console.log("hello")
+    }
+    const activey = () => {
+        console.log("bye")
+    }
     if (item.type === 'icons') {
         return ( 
-            <NumPad type="primary" shape="circle" space={item.space} background={item.type === "character"}>
+            <NumPad type="primary" shape="circle" space={item.space} onClick={active} background={item.type === "character"}>
                 <FontAwesomeIcon icon={item.key}/>
             </NumPad>
         )
     } else {
         return (
-            <NumPad type="primary" shape="circle" space={item.space} background={item.type === "character"}>{item.key}</NumPad>
+            <NumPad type="primary" shape="circle" space={item.space} onClick={activey} background={item.type === "character"}>{item.key}</NumPad>
         )
     }
 }

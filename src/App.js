@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Calculator from './Calculator'
 import Keypad from './Keypads'
 import Keydata from './keypad.json'
@@ -7,10 +7,15 @@ import { faBackspace, faDivide, faTimes, faMinus, faPlus, faEquals } from '@fort
 library.add(faBackspace, faDivide, faTimes, faMinus, faPlus, faEquals)
 
 const App = () => {
+  const [result, setResult] = useState("0")
+
+  const handleClick = (e) => {
+    setResult(result.concat(e.target.item.key))
+  }
   return (
-    <Calculator title="0">
+    <Calculator type="text" title={result}>
       {Keydata.map((item) => (
-        <Keypad key={item.key} item={item}/>
+        <Keypad onClick={handleClick} key={item.key} item={item}/>
       ))}
     </Calculator>
   )
