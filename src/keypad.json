@@ -13,7 +13,7 @@
         "key": "divide",
         "type": "icons",
         "space": 1,
-        "attributes": "÷"
+        "attributes": "/"
     },
     {
         "key": "7",
@@ -34,7 +34,7 @@
         "key": "times",
         "type": "icons",
         "space": 1,
-        "attributes": "x"
+        "attributes": "*"
     },
     {
         "key": "4",
