@@ -1,6 +1,6 @@
 import React from 'react';
 import Calculator from './Calculator'
-import Keypad from './Keypads'
+import Keypads from './Keypads'
 import Keydata from './keypad.json'
 import ResultScreen from './ResultScreen';
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -12,7 +12,7 @@ const App = () => {
     <Calculator>
       <ResultScreen result={[0]}/>
       {Keydata.map((item) => (
-        <Keypad key={item.key} item={item}/>
+        <Keypads key={item.key} item={item}/>
       ))}
     </Calculator>
   )

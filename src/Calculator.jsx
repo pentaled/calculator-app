@@ -1,5 +1,8 @@
+import React, { useState } from 'react';
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import Keypads from './Keypads'
+import ResultScreen from './ResultScreen';
 
 const FrameCalculator = styled.div`
     position: relative;
@@ -31,12 +34,28 @@ const FrameContent = styled.div`
     margin-top: -2.5px;
     hidden: scroll;
 `
-const Calculator = ({ children }) => {
+const Calculator = ({ children, item }) => {
+    const [result, setResult] = useState([])
+    const buttonsApply = () => {
+        if (item.type === 'icons') {
+          result.push(item.attributes)
+        } else {
+          result.push(item.key)
+        }
+        console.log(result)
+    }
     return (
         <FrameCalculator>
             <FrameContent>
                 {children}
             </FrameContent>
+            {result.length > 0? (
+                result.map((item) => {
+                    return <Keypads key={item.id} item={item} buttonsApply={buttonsApply}/>
+                })
+            ) : (
+                <ResultScreen result="0"/>
+            )} 
         </FrameCalculator>
     )
 }  
