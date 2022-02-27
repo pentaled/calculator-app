@@ -54,7 +54,7 @@ const Calculator = ({ children, item }) => {
                     return <Keypads key={item.id} item={item} buttonsApply={buttonsApply}/>
                 })
             ) : (
-                <ResultScreen result="0"/>
+                <FrameContent/>
             )} 
         </FrameCalculator>
     )
