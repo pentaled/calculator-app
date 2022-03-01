@@ -35,12 +35,13 @@ const FrameContent = styled.div`
     hidden: scroll;
 `
 const Calculator = ({ children, item }) => {
+    const keyEntered = []
     const [result, setResult] = useState([])
     const buttonsApply = () => {
         if (item.type === 'icons') {
-          result.push(item.attributes)
+          keyEntered.push(item.attributes)
         } else {
-          result.push(item.key)
+          key.push(item.key)
         }
         console.log(result)
     }
@@ -51,7 +52,7 @@ const Calculator = ({ children, item }) => {
             </FrameContent>
             {result.length > 0? (
                 result.map((item) => {
-                    return <Keypads key={item.id} item={item} buttonsApply={buttonsApply}/>
+                    return <Keypads buttonsApply={buttonsApply}/>
                 })
             ) : (
                 <FrameContent/>
