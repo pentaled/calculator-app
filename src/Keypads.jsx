@@ -42,10 +42,10 @@ Keypad.propTypes = {
     item: PropTypes.shape({
         key: PropTypes.string.isRequired,
         type: PropTypes.string,
-        space: PropTypes.string,
+        space: PropTypes.string.isRequired,
         attributes: PropTypes.string
     }),
-    buttonsApply: PropTypes.func.isRequired
+    buttonsApply: PropTypes.func
 }
   
 export default Keypad;

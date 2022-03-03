@@ -39,15 +39,15 @@ const Calculator = ({ children, item }) => {
     const [result, setResult] = useState([])
     const buttonsApply = () => {
         if (item.type === 'icons') {
-          keyEntered.push(item.attributes)
+            setResult(keyEntered.push(item.attributes))
         } else {
-          key.push(item.key)
+            setResult(keyEntered.push(item.key))
         }
-        console.log(result)
+        console.log(keyEntered)
     }
     return (
         <FrameCalculator>
-            <FrameContent>
+            <FrameContent onClick={() => console.log(keyEntered)}>
                 {children}
             </FrameContent>
             {result.length > 0? (
