@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import Keypads from './Keypads'
-import ResultScreen from './ResultScreen';
 
 const FrameCalculator = styled.div`
     position: relative;
@@ -38,10 +37,10 @@ const Calculator = ({ children, item }) => {
     const keyEntered = []
     const [result, setResult] = useState([])
     const buttonsApply = () => {
-        if (item.type === 'icons') {
-            setResult(keyEntered.push(item.attributes))
-        } else {
-            setResult(keyEntered.push(item.key))
+        if (item.type === 'icons') {const newData = keyEntered.push(item.attributes)
+            setResult(newData)
+        } else {const newData = keyEntered.push(item.key)
+            setResult(newData)
         }
         console.log(keyEntered)
     }

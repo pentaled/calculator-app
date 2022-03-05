@@ -24,15 +24,18 @@ const NumPad = styled.div`
 `
 // Goal: when push on button shows on the actual screen
 const Keypad = ({ item, buttonsApply }) => { // I tried to push the keys and attributes to the useState array so that it can do the calculations in the array but does not work.
+    const handleClick = () => {
+        buttonsApply()
+    };
     if (item.type === 'icons') {
         return ( 
-            <NumPad type="primary" shape="circle" onClick={buttonsApply} space={item.space} background={item.type === "character"}>
+            <NumPad type="primary" shape="circle" onClick={handleClick} space={item.space} background={item.type === "character"}>
                 <FontAwesomeIcon icon={item.key}/>
             </NumPad>
         )
     } else {
         return (
-            <NumPad type="primary" shape="circle" space={item.space} background={item.type === "character"}>{item.key}</NumPad>
+            <NumPad type="primary" shape="circle" onClick={handleClick} space={item.space} background={item.type === "character"}>{item.key}</NumPad>
         )
     } //In the bottom I tried to transfer the data from Keypads.jsx --> ResultScreen.jsx like List.jsx --> Listitem.jsx in the last project but it does not seem to work.
     
