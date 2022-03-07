@@ -8,7 +8,7 @@ const FrameCalculator = styled.div`
     justify-content: center;
     align-items: center;
     width: 347px;
-    height: 548px;
+    height: 547px;
     padding: 14px;
     margin: 20px auto 0;
     border: 1px solid #000;
@@ -37,16 +37,18 @@ const Calculator = ({ children, item }) => {
     const keyEntered = []
     const [result, setResult] = useState([])
     const buttonsApply = () => {
-        if (item.type === 'icons') {const newData = keyEntered.push(item.attributes)
-            setResult(newData)
-        } else {const newData = keyEntered.push(item.key)
-            setResult(newData)
+        if (item.type === 'icons') {
+            keyEntered.push(item.attributes)
+        } else {
+            keyEntered.push(item.key)
         }
-        console.log(keyEntered)
+    }
+    const calculate = () => {
+        keyEntered.concat(setResult)
     }
     return (
         <FrameCalculator>
-            <FrameContent onClick={() => console.log(keyEntered)}>
+            <FrameContent onClick={() => calculate()}>
                 {children}
             </FrameContent>
             {result.length > 0? (
