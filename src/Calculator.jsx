@@ -33,9 +33,31 @@ const FrameContent = styled.div`
     margin-top: -2.5px;
     hidden: scroll;
 `
-const Calculator = ({ children, item }) => {
+
+const FrameResult = styled.div`
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 325px;
+    height: 80px;
+    padding: 14px;
+    padding-bottom: 0px;
+    padding-top: 40px;
+    margin: -10px;
+    margin-top: -29px;
+    hidden: scroll;
+    text-align: right;
+    font-size: 55px;
+    font-family: Arial;
+    letter-spacing: 2px;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    border-width: 2px;
+`
+
+const Calculator = ({ children, item, result }) => {
     const keyEntered = []
-    const [result, setResult] = useState([])
+    const [insert, setResult] = useState([])
     const buttonsApply = () => {
         if (item.type === 'icons') {
             keyEntered.push(item.attributes)
@@ -48,11 +70,14 @@ const Calculator = ({ children, item }) => {
     }
     return (
         <FrameCalculator>
+            <FrameResult>
+                {result}            
+            </FrameResult>
             <FrameContent onClick={() => calculate()}>
                 {children}
             </FrameContent>
-            {result.length > 0? (
-                result.map((item) => {
+            {insert.length > 0? (
+                insert.map((item) => {
                     return <Keypads buttonsApply={buttonsApply}/>
                 })
             ) : (
@@ -62,7 +87,12 @@ const Calculator = ({ children, item }) => {
     )
 }  
 
+Calculator.defaultProps = {
+    result: "Error"
+}
+
 Calculator.propTypes = {
+    result: PropTypes.array.isRequired,
     children: PropTypes.node
 }
 

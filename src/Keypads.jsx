@@ -22,8 +22,8 @@ const NumPad = styled.div`
         border-color: ${props => props.background ? '#4a4a4a' : '#eb8f3f'};
     }
 `
-// Goal: when push on button shows on the actual screen
-const Keypad = ({ item, buttonsApply }) => { // I tried to push the keys and attributes to the useState array so that it can do the calculations in the array but does not work.
+
+const Keypad = ({ item, buttonsApply }) => {
     const handleClick = () => {
         buttonsApply()
     };
@@ -37,7 +37,7 @@ const Keypad = ({ item, buttonsApply }) => { // I tried to push the keys and att
         return (
             <NumPad type="primary" shape="circle" onClick={handleClick} space={item.space} background={item.type === "character"}>{item.key}</NumPad>
         )
-    } //In the bottom I tried to transfer the data from Keypads.jsx --> ResultScreen.jsx like List.jsx --> Listitem.jsx in the last project but it does not seem to work.
+    }
     
 }
 
