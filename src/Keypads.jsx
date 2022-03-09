@@ -45,7 +45,7 @@ Keypad.propTypes = {
     item: PropTypes.shape({
         key: PropTypes.string.isRequired,
         type: PropTypes.string,
-        space: PropTypes.string.isRequired,
+        space: PropTypes.number,
         attributes: PropTypes.string
     }),
     buttonsApply: PropTypes.func
