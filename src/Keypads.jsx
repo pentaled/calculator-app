@@ -48,7 +48,7 @@ Keypad.propTypes = {
         space: PropTypes.number,
         attributes: PropTypes.string
     }),
-    buttonsApply: PropTypes.func
+    buttonsApply: PropTypes.element
 }
   
 export default Keypad;

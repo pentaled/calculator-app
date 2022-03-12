@@ -56,7 +56,7 @@ const FrameResult = styled.div`
 `
 
 const Calculator = ({ children, item, result }) => {
-    const keyEntered = []
+    const keyEntered = [result]
     const [insert, setResult] = useState([])
     const buttonsApply = () => {
         if (item.type === 'icons') {
@@ -78,7 +78,7 @@ const Calculator = ({ children, item, result }) => {
             </FrameContent>
             {insert.length > 0? (
                 insert.map((item) => {
-                    return <Keypads buttonsApply={buttonsApply}/>
+                    return <Keypads buttonsApply={buttonsApply} keyEntered={keyEntered}/>
                 })
             ) : (
                 <FrameContent/>
