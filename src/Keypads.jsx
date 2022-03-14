@@ -23,7 +23,7 @@ const NumPad = styled.div`
     }
 `
 
-const Keypad = ({ item, buttonsApply }) => {
+const Keypad = ({ item, buttonsApply, calculate}) => {
     const handleClick = () => {
         buttonsApply()
     };
@@ -48,7 +48,8 @@ Keypad.propTypes = {
         space: PropTypes.number,
         attributes: PropTypes.string
     }),
-    buttonsApply: PropTypes.element
+    buttonsApply: PropTypes.func,
+    calculate: PropTypes.func
 }
   
 export default Keypad;

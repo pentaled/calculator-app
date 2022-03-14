@@ -65,20 +65,20 @@ const Calculator = ({ children, item, result }) => {
             keyEntered.push(item.key)
         }
     }
-    const calculate = () => {
-        keyEntered.concat(setResult)
+    const calculate = (e) => {
+        setResult(insert.concat(e.target.item.key))
     }
     return (
         <FrameCalculator>
             <FrameResult>
                 {result}            
             </FrameResult>
-            <FrameContent onClick={() => calculate()}>
+            <FrameContent>
                 {children}
             </FrameContent>
             {insert.length > 0? (
                 insert.map((item) => {
-                    return <Keypads buttonsApply={buttonsApply} keyEntered={keyEntered}/>
+                    return <Keypads item={item} calculate={calculate} buttonsApply={buttonsApply}/>
                 })
             ) : (
                 <FrameContent/>
