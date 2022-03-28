@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Keydata from './keypad.json'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import Keypads from './Keypads'
@@ -55,15 +56,17 @@ const FrameResult = styled.div`
     border-width: 2px;
 `
 
-const Calculator = ({ children, item, result }) => {
+const Calculator = ({ item, result }) => {
     const keyEntered = [result]
     const [insert, setResult] = useState([])
-    const buttonsApply = () => {
-        if (item.type === 'icons') {
-            keyEntered.push(item.attributes)
-        } else {
-            keyEntered.push(item.key)
-        }
+
+    const buttonsApply = () => { //Problem One
+        Keydata.forEach((item) => {
+            if (item.type === 'icons') {
+                console.log(item.attributes)
+            }
+            console.log(item.key)
+        }) 
     }
     const calculate = (e) => {
         setResult(insert.concat(e.target.item.key))
@@ -74,15 +77,10 @@ const Calculator = ({ children, item, result }) => {
                 {result}            
             </FrameResult>
             <FrameContent>
-                {children}
+                {Keydata.map((item) => (
+                    <Keypads key={item.key} item={item} calculate={calculate} buttonsApply={buttonsApply}/>
+                ))}
             </FrameContent>
-            {insert.length > 0? (
-                insert.map((item) => {
-                    return <Keypads item={item} calculate={calculate} buttonsApply={buttonsApply}/>
-                })
-            ) : (
-                <FrameContent/>
-            )} 
         </FrameCalculator>
     )
 }  
@@ -92,8 +90,13 @@ Calculator.defaultProps = {
 }
 
 Calculator.propTypes = {
-    result: PropTypes.array.isRequired,
-    children: PropTypes.node
+    item: PropTypes.shape({
+        key: PropTypes.string.isRequired,
+        type: PropTypes.string,
+        space: PropTypes.number,
+        attributes: PropTypes.string
+    }),
+    result: PropTypes.array.isRequired
 }
 
-export default Calculator
+export default Calculator;

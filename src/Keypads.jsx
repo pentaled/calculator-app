@@ -23,19 +23,16 @@ const NumPad = styled.div`
     }
 `
 
-const Keypad = ({ item, buttonsApply, calculate}) => {
-    const handleClick = () => {
-        buttonsApply()
-    };
+const Keypad = ({ item, buttonsApply, calculate }) => {
     if (item.type === 'icons') {
         return ( 
-            <NumPad type="primary" shape="circle" onClick={handleClick} space={item.space} background={item.type === "character"}>
+            <NumPad type="primary" shape="circle" onClick={buttonsApply} space={item.space} background={item.type === "character"}>
                 <FontAwesomeIcon icon={item.key}/>
             </NumPad>
         )
     } else {
         return (
-            <NumPad type="primary" shape="circle" onClick={handleClick} space={item.space} background={item.type === "character"}>{item.key}</NumPad>
+            <NumPad type="primary" shape="circle" onClick={buttonsApply} space={item.space} background={item.type === "character"}>{item.key}</NumPad>
         )
     }
     
@@ -48,8 +45,8 @@ Keypad.propTypes = {
         space: PropTypes.number,
         attributes: PropTypes.string
     }),
-    buttonsApply: PropTypes.func,
-    calculate: PropTypes.func
+    buttonsApply: PropTypes.func.isRequired,
+    calculate: PropTypes.func.isRequired
 }
   
 export default Keypad;
