@@ -56,17 +56,15 @@ const FrameResult = styled.div`
     border-width: 2px;
 `
 
-const Calculator = ({ item, result }) => {
-    const keyEntered = [result]
+const Calculator = ({ result }) => {
+    const keyEntered = []
     const [insert, setResult] = useState([])
 
-    const buttonsApply = () => { //Problem One
-        Keydata.forEach((item) => {
-            if (item.type === 'icons') {
-                console.log(item.attributes)
-            }
-            console.log(item.key)
-        }) 
+    const buttonsApply = (item) => { //Problem One
+        if (item.type === 'icons') {
+            console.log(item.attributes)
+        }
+        console.log(item.key)
     }
     const calculate = (e) => {
         setResult(insert.concat(e.target.item.key))
@@ -74,7 +72,7 @@ const Calculator = ({ item, result }) => {
     return (
         <FrameCalculator>
             <FrameResult>
-                {result}            
+                {result}
             </FrameResult>
             <FrameContent>
                 {Keydata.map((item) => (

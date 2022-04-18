@@ -22,17 +22,20 @@ const NumPad = styled.div`
         border-color: ${props => props.background ? '#4a4a4a' : '#eb8f3f'};
     }
 `
-
+// onClick={buttonsApply} change to onClick={() => actionComplete(item.id)}
 const Keypad = ({ item, buttonsApply, calculate }) => {
+    const handleClick = (item) => {
+        buttonsApply(item)
+    }
     if (item.type === 'icons') {
         return ( 
-            <NumPad type="primary" shape="circle" onClick={buttonsApply} space={item.space} background={item.type === "character"}>
+            <NumPad type="primary" shape="circle" onClick={() => handleClick(item)} space={item.space} background={item.type === "character"}>
                 <FontAwesomeIcon icon={item.key}/>
             </NumPad>
         )
     } else {
         return (
-            <NumPad type="primary" shape="circle" onClick={buttonsApply} space={item.space} background={item.type === "character"}>{item.key}</NumPad>
+            <NumPad type="primary" shape="circle" onClick={() => handleClick(item)} space={item.space} background={item.type === "character"}>{item.key}</NumPad>
         )
     }
     
