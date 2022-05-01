@@ -23,9 +23,10 @@ const NumPad = styled.div`
     }
 `
 // onClick={buttonsApply} change to onClick={() => actionComplete(item.id)}
-const Keypad = ({ item, buttonsApply, calculate }) => {
+const Keypad = ({ item, buttonsApply, calculate}) => {
     const handleClick = (item) => {
         buttonsApply(item)
+        calculate()
     }
     if (item.type === 'icons') {
         return ( 
@@ -49,7 +50,7 @@ Keypad.propTypes = {
         attributes: PropTypes.string
     }),
     buttonsApply: PropTypes.func.isRequired,
-    calculate: PropTypes.func.isRequired
+    calculate: PropTypes.func.isRequired,
 }
   
 export default Keypad;

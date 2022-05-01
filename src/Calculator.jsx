@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Keydata from './keypad.json'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
@@ -57,18 +57,34 @@ const FrameResult = styled.div`
 `
 
 const Calculator = ({ result }) => {
-    const keyEntered = []
-    const [insert, setResult] = useState([])
-
-    const buttonsApply = (item) => { //Problem One
+    const keyEntered = [] // The array to make the calculations
+    const toNumbers = arr => arr.map(Number) // The function to change all things in the array to a number
+    const buttonsApply = (item) => { 
         if (item.type === 'icons') {
-            console.log(item.attributes)
+            result.push(item.attributes) // Problem #3 "Cannot push the numbers in the Result area"
+            keyEntered.push(item.attributes) // To calculate the inputs
+        } else {
+            result.push(item.key)
+            keyEntered.push(item.key)
+        } 
+        if (item.key === "C") { // Problem #2 "Cannot put C, Del & equals in different functions and have to fit in ButtonsApply or else item is undentified"
+            result.length = 0 // Sets the length of the array to 0 so that there will be nothing inside the array
         }
-        console.log(item.key)
+        if (item.key === "Del") {
+            result.pop() // To remove the 'Del' 
+            result.pop() 
+        }
+        if (item.key === "equals") {
+            result.pop()
+            toNumbers(keyEntered) // Problem #1 "Cannot chnage the string in array to numbers"
+            console.log(keyEntered)
+        }
+        console.log("result", result) 
     }
-    const calculate = (e) => {
-        setResult(insert.concat(e.target.item.key))
+    const calculate = () => {
+        console.log("keyEntered", keyEntered)
     }
+
     return (
         <FrameCalculator>
             <FrameResult>

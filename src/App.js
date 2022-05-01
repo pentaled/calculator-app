@@ -6,7 +6,7 @@ library.add(faBackspace, faDivide, faTimes, faMinus, faPlus, faEquals)
 
 const App = () => {
   return (
-    <Calculator result={[0]}/>
+    <Calculator result={[]}/>
   )
 }
 
