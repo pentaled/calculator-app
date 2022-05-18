@@ -57,8 +57,7 @@ const FrameResult = styled.div`
 `
 
 const Calculator = ({ result }) => {
-    const keyEntered = [] // The array to make the calculations
-    const toNumbers = arr => arr.map(Number) // The function to change all things in the array to a number
+    const keyEntered = [] // The array to make the calculations // The function to change all things in the array to a number
     const buttonsApply = (item) => { 
         if (item.type === 'icons') {
             result.push(item.attributes) // Problem #3 "Cannot push the numbers in the Result area"
@@ -68,27 +67,63 @@ const Calculator = ({ result }) => {
             keyEntered.push(item.key)
         } 
         if (item.key === "C") { // Problem #2 "Cannot put C, Del & equals in different functions and have to fit in ButtonsApply or else item is undentified"
-            result.length = 0 // Sets the length of the array to 0 so that there will be nothing inside the array
+            result.splice(0, result.length) // Sets the length of the array to 0 so that there will be nothing inside the array
+            keyEntered.splice(0, keyEntered.length)
         }
         if (item.key === "Del") {
             result.pop() // To remove the 'Del' 
-            result.pop() 
+            result.pop()
+            keyEntered.pop()
+            keyEntered.pop()
         }
         if (item.key === "equals") {
-            result.pop()
-            toNumbers(keyEntered) // Problem #1 "Cannot chnage the string in array to numbers"
-            console.log(keyEntered)
+            keyEntered.pop()
+            if (keyEntered.includes("+") === true) {
+                const remplus = keyEntered.indexOf("+")
+                keyEntered.splice(remplus, 1)
+                const strtonum = keyEntered.join()
+                const newarr = strtonum.split(',').map(Number)
+                const number = newarr.reduce((a, b) => a + b)
+                const text = number.toString()
+                console.log(text)// Do not do result = text otherwise it will have error
+            }
+            if (keyEntered.includes("-") === true) {
+                const remminus = keyEntered.indexOf("-")
+                keyEntered.splice(remminus, 1)
+                const strtonum = keyEntered.join()
+                const newarr = strtonum.split(',').map(Number)
+                const number = newarr.reduce((a, b) => a - b)
+                console.log(number)
+            }
+            if (keyEntered.includes("*") === true) {
+                const remtimes = keyEntered.indexOf("*")
+                keyEntered.splice(remtimes, 1)
+                const strtonum = keyEntered.join()
+                const newarr = strtonum.split(',').map(Number)
+                const number = newarr.reduce((a, b) => a * b)
+                console.log(number)
+            }
+            if (keyEntered.includes("/") === true) {
+                const remdiv = keyEntered.indexOf("/")
+                keyEntered.splice(remdiv, 1)
+                const strtonum = keyEntered.join()
+                const newarr = strtonum.split(',').map(Number)
+                const number = newarr.reduce((a, b) => a / b)
+                console.log(number)
+            }
         }
         console.log("result", result) 
     }
     const calculate = () => {
         console.log("keyEntered", keyEntered)
     }
-
+//#3 
+//You cannot push the array into result because result is string. You need set result in the calculate function. You only show the results after calculation. Wrong place to display result.
+//Need to move FrameResult styled component to ResultScreen.jsx!!!
     return (
         <FrameCalculator>
             <FrameResult>
-                {result}
+                {result} 
             </FrameResult>
             <FrameContent>
                 {Keydata.map((item) => (
