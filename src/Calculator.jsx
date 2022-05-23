@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Keydata from './keypad.json'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
@@ -57,77 +57,85 @@ const FrameResult = styled.div`
 `
 
 const Calculator = ({ result }) => {
-    const keyEntered = [] // The array to make the calculations // The function to change all things in the array to a number
+    const [insert, setResult] = useState([])//Use react hook
+
+    useEffect(() => {
+        setResult(result)
+    }, [result])
+
     const buttonsApply = (item) => { 
         if (item.type === 'icons') {
-            result.push(item.attributes) // Problem #3 "Cannot push the numbers in the Result area"
-            keyEntered.push(item.attributes) // To calculate the inputs
+            result.push(item.attributes) 
         } else {
             result.push(item.key)
-            keyEntered.push(item.key)
         } 
-        if (item.key === "C") { // Problem #2 "Cannot put C, Del & equals in different functions and have to fit in ButtonsApply or else item is undentified"
-            result.splice(0, result.length) // Sets the length of the array to 0 so that there will be nothing inside the array
-            keyEntered.splice(0, keyEntered.length)
+        if (item.key === "C") { 
+            const newData = result.splice(0, result.length) 
+            setResult(newData)
         }
         if (item.key === "Del") {
-            result.pop() // To remove the 'Del' 
             result.pop()
-            keyEntered.pop()
-            keyEntered.pop()
+            const newData = result.pop()
+            setResult(newData)
         }
         if (item.key === "equals") {
-            keyEntered.pop()
-            if (keyEntered.includes("+") === true) {
-                const remplus = keyEntered.indexOf("+")
-                keyEntered.splice(remplus, 1)
-                const strtonum = keyEntered.join()
+            result.pop()
+            if (result.includes("+") === true) {
+                const remplus = result.indexOf("+")
+                result.splice(remplus, 1)
+                const strtonum = result.join()
                 const newarr = strtonum.split(',').map(Number)
                 const number = newarr.reduce((a, b) => a + b)
+                insert.splice(0, insert.length)
                 const text = number.toString()
-                console.log(text)// Do not do result = text otherwise it will have error
+                const newData = insert.push(text)
+                setResult(newData)
+                
             }
-            if (keyEntered.includes("-") === true) {
-                const remminus = keyEntered.indexOf("-")
-                keyEntered.splice(remminus, 1)
-                const strtonum = keyEntered.join()
+            if (result.includes("-") === true) {
+                const remminus = result.indexOf("-")
+                result.splice(remminus, 1)
+                const strtonum = result.join()
                 const newarr = strtonum.split(',').map(Number)
                 const number = newarr.reduce((a, b) => a - b)
-                console.log(number)
+                insert.splice(0, insert.length)
+                const text = number.toString()
+                const newData = insert.push(text)
+                setResult(newData)
             }
-            if (keyEntered.includes("*") === true) {
-                const remtimes = keyEntered.indexOf("*")
-                keyEntered.splice(remtimes, 1)
-                const strtonum = keyEntered.join()
+            if (result.includes("*") === true) {
+                const remtimes = result.indexOf("*")
+                result.splice(remtimes, 1)
+                const strtonum = result.join()
                 const newarr = strtonum.split(',').map(Number)
                 const number = newarr.reduce((a, b) => a * b)
-                console.log(number)
+                insert.splice(0, insert.length)
+                const text = number.toString()
+                const newData = insert.push(text)
+                setResult(newData)
             }
-            if (keyEntered.includes("/") === true) {
-                const remdiv = keyEntered.indexOf("/")
-                keyEntered.splice(remdiv, 1)
-                const strtonum = keyEntered.join()
+            if (result.includes("/") === true) {
+                const remdiv = result.indexOf("/")
+                result.splice(remdiv, 1)
+                const strtonum = result.join()
                 const newarr = strtonum.split(',').map(Number)
                 const number = newarr.reduce((a, b) => a / b)
-                console.log(number)
+                insert.splice(0, insert.length)
+                const text = number.toString()
+                const newData = insert.push(text)
+                setResult(newData)
             }
         }
         console.log("result", result) 
     }
-    const calculate = () => {
-        console.log("keyEntered", keyEntered)
-    }
-//#3 
-//You cannot push the array into result because result is string. You need set result in the calculate function. You only show the results after calculation. Wrong place to display result.
-//Need to move FrameResult styled component to ResultScreen.jsx!!!
     return (
         <FrameCalculator>
-            <FrameResult>
+            <FrameResult data-testid="result">
                 {result} 
             </FrameResult>
             <FrameContent>
                 {Keydata.map((item) => (
-                    <Keypads key={item.key} item={item} calculate={calculate} buttonsApply={buttonsApply}/>
+                    <Keypads key={item.key} item={item} buttonsApply={buttonsApply}/>
                 ))}
             </FrameContent>
         </FrameCalculator>
@@ -135,7 +143,7 @@ const Calculator = ({ result }) => {
 }  
 
 Calculator.defaultProps = {
-    result: "Error"
+    result: [0]
 }
 
 Calculator.propTypes = {

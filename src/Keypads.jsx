@@ -23,23 +23,27 @@ const NumPad = styled.div`
     }
 `
 // onClick={buttonsApply} change to onClick={() => actionComplete(item.id)}
-const Keypad = ({ item, buttonsApply, calculate}) => {
+const Keypad = ({ id, attributes, item, buttonsApply}) => {
     const handleClick = (item) => {
         buttonsApply(item)
-        calculate()
     }
     if (item.type === 'icons') {
         return ( 
-            <NumPad type="primary" shape="circle" onClick={() => handleClick(item)} space={item.space} background={item.type === "character"}>
+            <NumPad data-testid={`attribute-click-${attributes}`} type="primary" shape="circle" onClick={() => handleClick(item)} space={item.space} background={item.type === "character"}>
                 <FontAwesomeIcon icon={item.key}/>
             </NumPad>
         )
     } else {
         return (
-            <NumPad type="primary" shape="circle" onClick={() => handleClick(item)} space={item.space} background={item.type === "character"}>{item.key}</NumPad>
+            <NumPad data-testid={`number-click-${attributes}`} type="primary" shape="circle" onClick={() => handleClick(item)} space={item.space} background={item.type === "character"}>{item.key}</NumPad>
         )
     }
     
+}
+
+Keypad.defaultProps = {
+    attributes: 'symbol',
+    initialValues: {}
 }
 
 Keypad.propTypes = {
@@ -49,8 +53,7 @@ Keypad.propTypes = {
         space: PropTypes.number,
         attributes: PropTypes.string
     }),
-    buttonsApply: PropTypes.func.isRequired,
-    calculate: PropTypes.func.isRequired,
+    buttonsApply: PropTypes.func.isRequired
 }
   
 export default Keypad;
