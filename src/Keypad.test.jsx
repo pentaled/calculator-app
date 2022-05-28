@@ -1,16 +1,19 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import Keypads from './Keypads'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faBackspace, faDivide, faTimes, faMinus, faPlus, faEquals } from '@fortawesome/free-solid-svg-icons'
+library.add(faBackspace, faDivide, faTimes, faMinus, faPlus, faEquals)
 import Calculator from './Calculator';
-import keypad from './keypad.json'
+
 
 //Sum
     test('result shoudld be six if three is added with three', () => {
-        render(<Calculator item={keypad}></Calculator>);
+        render(<Calculator></Calculator>);
         fireEvent.click(screen.getByTestId("number-click-3"))
         fireEvent.click(screen.getByTestId("attribute-click-plus"))
         fireEvent.click(screen.getByTestId("number-click-3"))
-        const element = screen.getByText('result')
-        expect(element).toHaveValue('6');
+        fireEvent.click(screen.getByTestId("attribute-click-equals"))
+        const element = screen.getByTestId('result')
+        expect(element).toBe(6);
     })
 //Subtraction 
 

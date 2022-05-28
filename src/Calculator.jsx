@@ -65,9 +65,11 @@ const Calculator = ({ result }) => {
 
     const buttonsApply = (item) => { 
         if (item.type === 'icons') {
-            result.push(item.attributes) 
+            const newData = result.push(item.attributes) 
+            setResult(newData)
         } else {
-            result.push(item.key)
+            const newData = result.push(item.key)
+            setResult(newData)
         } 
         if (item.key === "C") { 
             const newData = result.splice(0, result.length) 
@@ -86,9 +88,9 @@ const Calculator = ({ result }) => {
                 const strtonum = result.join()
                 const newarr = strtonum.split(',').map(Number)
                 const number = newarr.reduce((a, b) => a + b)
-                insert.splice(0, insert.length)
+                result.splice(0, result.length)
                 const text = number.toString()
-                const newData = insert.push(text)
+                const newData = result.push(text)
                 setResult(newData)
                 
             }
@@ -98,9 +100,9 @@ const Calculator = ({ result }) => {
                 const strtonum = result.join()
                 const newarr = strtonum.split(',').map(Number)
                 const number = newarr.reduce((a, b) => a - b)
-                insert.splice(0, insert.length)
+                result.splice(0, result.length)
                 const text = number.toString()
-                const newData = insert.push(text)
+                const newData = result.push(text)
                 setResult(newData)
             }
             if (result.includes("*") === true) {
@@ -109,9 +111,9 @@ const Calculator = ({ result }) => {
                 const strtonum = result.join()
                 const newarr = strtonum.split(',').map(Number)
                 const number = newarr.reduce((a, b) => a * b)
-                insert.splice(0, insert.length)
+                result.splice(0, result.length)
                 const text = number.toString()
-                const newData = insert.push(text)
+                const newData = result.push(text)
                 setResult(newData)
             }
             if (result.includes("/") === true) {
@@ -120,22 +122,26 @@ const Calculator = ({ result }) => {
                 const strtonum = result.join()
                 const newarr = strtonum.split(',').map(Number)
                 const number = newarr.reduce((a, b) => a / b)
-                insert.splice(0, insert.length)
+                result.splice(0, result.length)
                 const text = number.toString()
-                const newData = insert.push(text)
+                const newData = result.push(text)
                 setResult(newData)
             }
         }
-        console.log("result", result) 
+        //style={{ display: 'visibility hidden' }}
     }
     return (
         <FrameCalculator>
-            <FrameResult data-testid="result">
-                {result} 
-            </FrameResult>
+            {insert? (
+                <FrameResult data-testid="result">
+                    {result} 
+                </FrameResult>
+            ):(
+                <FrameResult/>
+            )}
             <FrameContent>
                 {Keydata.map((item) => (
-                    <Keypads key={item.key} item={item} buttonsApply={buttonsApply}/>
+                    <Keypads key={item.key} item={item} buttonsApply={buttonsApply} />
                 ))}
             </FrameContent>
         </FrameCalculator>

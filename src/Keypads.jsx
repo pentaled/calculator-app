@@ -23,27 +23,22 @@ const NumPad = styled.div`
     }
 `
 // onClick={buttonsApply} change to onClick={() => actionComplete(item.id)}
-const Keypad = ({ id, attributes, item, buttonsApply}) => {
+const Keypad = ({ item, buttonsApply}) => {
     const handleClick = (item) => {
         buttonsApply(item)
     }
     if (item.type === 'icons') {
         return ( 
-            <NumPad data-testid={`attribute-click-${attributes}`} type="primary" shape="circle" onClick={() => handleClick(item)} space={item.space} background={item.type === "character"}>
+            <NumPad data-testid={`attribute-click-${item.key}`} type="primary" shape="circle" onClick={() => handleClick(item)} space={item.space} background={item.type === "character"}>
                 <FontAwesomeIcon icon={item.key}/>
             </NumPad>
         )
     } else {
         return (
-            <NumPad data-testid={`number-click-${attributes}`} type="primary" shape="circle" onClick={() => handleClick(item)} space={item.space} background={item.type === "character"}>{item.key}</NumPad>
+            <NumPad data-testid={`number-click-${item.key}`} type="primary" shape="circle" onClick={() => handleClick(item)} space={item.space} background={item.type === "character"}>{item.key}</NumPad>
         )
     }
     
-}
-
-Keypad.defaultProps = {
-    attributes: 'symbol',
-    initialValues: {}
 }
 
 Keypad.propTypes = {
