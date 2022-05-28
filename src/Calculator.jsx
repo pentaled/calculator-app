@@ -133,7 +133,7 @@ const Calculator = ({ result }) => {
     return (
         <FrameCalculator>
             {insert? (
-                <FrameResult data-testid="result">
+                <FrameResult>
                     {result} 
                 </FrameResult>
             ):(

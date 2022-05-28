@@ -6,14 +6,14 @@ import Calculator from './Calculator';
 
 
 //Sum
-    test('result shoudld be six if three is added with three', () => {
+    test('result shoudld be 18 if 9 is added with 9', () => {
         render(<Calculator></Calculator>);
-        fireEvent.click(screen.getByTestId("number-click-3"))
+        fireEvent.click(screen.getByTestId("number-click-9"))
         fireEvent.click(screen.getByTestId("attribute-click-plus"))
-        fireEvent.click(screen.getByTestId("number-click-3"))
+        fireEvent.click(screen.getByTestId("number-click-9"))
         fireEvent.click(screen.getByTestId("attribute-click-equals"))
-        const element = screen.getByTestId('result')
-        expect(element).toBe(6);
+        const element = screen.getByText(/18/i)
+        expect(element).toBe(18);
     })
 //Subtraction 
 
