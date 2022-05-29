@@ -128,12 +128,11 @@ const Calculator = ({ result }) => {
                 setResult(newData)
             }
         }
-        //style={{ display: 'visibility hidden' }}
     }
     return (
         <FrameCalculator>
             {insert? (
-                <FrameResult>
+                <FrameResult data-testid="result">
                     {result} 
                 </FrameResult>
             ):(
@@ -149,7 +148,7 @@ const Calculator = ({ result }) => {
 }  
 
 Calculator.defaultProps = {
-    result: [0]
+    result: []
 }
 
 Calculator.propTypes = {
