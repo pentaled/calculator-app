@@ -82,12 +82,12 @@ const Calculator = ({ result }) => {
         }
         if (item.key === "equals") {
             result.pop()
+            console.log("(0) result", result)
             if (result.includes("+") === true) {
-                const remplus = result.indexOf("+")
-                result.splice(remplus, 1)
-                const strtonum = result.join()
-                const newarr = strtonum.split(',').map(Number)
-                const number = newarr.reduce((a, b) => a + b)
+                const strtonum = result.join('')
+                const remplus = strtonum.replaceAll('+', ',')
+                const newarr = remplus.split(',').map(Number)
+                const number = newarr.reduce((a, b) => a + b) 
                 result.splice(0, result.length)
                 const text = number.toString()
                 const newData = result.push(text)
@@ -95,39 +95,39 @@ const Calculator = ({ result }) => {
                 
             }
             if (result.includes("-") === true) {
-                const remminus = result.indexOf("-")
-                result.splice(remminus, 1)
-                const strtonum = result.join()
-                const newarr = strtonum.split(',').map(Number)
-                const number = newarr.reduce((a, b) => a - b)
+                const strtonum = result.join('')
+                const remminus = strtonum.replaceAll('-', ',')
+                const newarr = remminus.split(',').map(Number)
+                const number = newarr.reduce((a, b) => a - b) 
                 result.splice(0, result.length)
                 const text = number.toString()
                 const newData = result.push(text)
                 setResult(newData)
             }
             if (result.includes("*") === true) {
-                const remtimes = result.indexOf("*")
-                result.splice(remtimes, 1)
-                const strtonum = result.join()
-                const newarr = strtonum.split(',').map(Number)
-                const number = newarr.reduce((a, b) => a * b)
+                const strtonum = result.join('')
+                const remtimes = strtonum.replaceAll('*', ',')
+                const newarr = remtimes.split(',').map(Number)
+                const number = newarr.reduce((a, b) => a * b) 
                 result.splice(0, result.length)
                 const text = number.toString()
                 const newData = result.push(text)
                 setResult(newData)
             }
             if (result.includes("/") === true) {
-                const remdiv = result.indexOf("/")
-                result.splice(remdiv, 1)
-                const strtonum = result.join()
-                const newarr = strtonum.split(',').map(Number)
-                const number = newarr.reduce((a, b) => a / b)
+                const strtonum = result.join('')
+                const remdiv = strtonum.replaceAll('/', ',')
+                const newarr = remdiv.split(',').map(Number)
+                const number = newarr.reduce((a, b) => a / b) 
                 result.splice(0, result.length)
                 const text = number.toString()
                 const newData = result.push(text)
                 setResult(newData)
             }
         }
+        const p = 'The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?';
+
+        console.log(p.replaceAll('dog', ','));
     }
     return (
         <FrameCalculator>
