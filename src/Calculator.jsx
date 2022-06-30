@@ -82,52 +82,158 @@ const Calculator = ({ result }) => {
         }
         if (item.key === "equals") {
             result.pop()
-            console.log("(0) result", result)
-            if (result.includes("+") === true) {
-                const strtonum = result.join('')
-                const remplus = strtonum.replaceAll('+', ',')
-                const newarr = remplus.split(',').map(Number)
-                const number = newarr.reduce((a, b) => a + b) 
-                result.splice(0, result.length)
-                const text = number.toString()
-                const newData = result.push(text)
-                setResult(newData)
-                
-            }
-            if (result.includes("-") === true) {
-                const strtonum = result.join('')
-                const remminus = strtonum.replaceAll('-', ',')
-                const newarr = remminus.split(',').map(Number)
-                const number = newarr.reduce((a, b) => a - b) 
-                result.splice(0, result.length)
-                const text = number.toString()
-                const newData = result.push(text)
-                setResult(newData)
-            }
-            if (result.includes("*") === true) {
-                const strtonum = result.join('')
-                const remtimes = strtonum.replaceAll('*', ',')
-                const newarr = remtimes.split(',').map(Number)
-                const number = newarr.reduce((a, b) => a * b) 
-                result.splice(0, result.length)
-                const text = number.toString()
-                const newData = result.push(text)
-                setResult(newData)
-            }
-            if (result.includes("/") === true) {
-                const strtonum = result.join('')
-                const remdiv = strtonum.replaceAll('/', ',')
-                const newarr = remdiv.split(',').map(Number)
-                const number = newarr.reduce((a, b) => a / b) 
-                result.splice(0, result.length)
-                const text = number.toString()
-                const newData = result.push(text)
-                setResult(newData)
-            }
-        }
-        const p = 'The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?';
+            console.log("(STEP 1)", result)
 
-        console.log(p.replaceAll('dog', ','));
+            /*FUNCTIONS*/
+            const convertArray = (x) => {
+                input.splice(0, input.length)
+                for (const i of x) {
+                    input.push(i);
+                }
+            }
+            const convertEquation = () => {
+                const number = input.join('')
+                const newArray = number.split(" ");
+                const filterarr = newArray.filter(i => {return i !== null && i !== '';});
+                const editArray = filterarr.join(' ')
+                const findPlus = /p/g;
+                const replacementPlus = '+';
+                const resultPlus = editArray.replace(findPlus, replacementPlus);
+                const findMinus = /m/g;
+                const replacementMinus = '-';
+                const resultMinus = resultPlus.replace(findMinus, replacementMinus);
+                input.splice(0, input.length)
+                loopCount.splice(0, loopCount.length)
+                convertArray(resultMinus.split(" "))
+            }
+            const Calculate = (Numtonum) => {
+                if (Numtonum.includes("+") === true) {
+                    const strtonum = Numtonum.join('')
+                    const remplus = strtonum.replace('+', ',')
+                    const newarr = remplus.split(',').map(Number)
+                    const result = (newarr.reduce((a, b) => a + b)) 
+                    return (result.toString())
+                }
+                if (Numtonum.includes("-") === true) {
+                    const strtonum = Numtonum.join('')
+                    const remplus = strtonum.replace('-', ',')
+                    const newarr = remplus.split(',').map(Number)
+                    const result = (newarr.reduce((a, b) => a - b)) 
+                    return (result.toString())
+                }
+                if (Numtonum.includes("/") === true) {
+                    const strtonum = Numtonum.join('')
+                    const remplus = strtonum.replace('/', ',')
+                    const newarr = remplus.split(',').map(Number)
+                    const result = (newarr.reduce((a, b) => a / b)) 
+                    return (result.toString())
+                }
+                if (Numtonum.includes("*") === true) {
+                    const strtonum = Numtonum.join('')
+                    const remplus = strtonum.replace('*', ',')
+                    const newarr = remplus.split(',').map(Number)
+                    const result = (newarr.reduce((a, b) => a * b)) 
+                    return (result.toString())
+                }
+            }
+            const simplifyArray = (index) => {
+                const indexNum1 = index - 1
+                const indexNum2 = index + 1
+                const Numtonum = input.slice(indexNum1, indexNum2+1);
+                input.splice(indexNum1, Numtonum.length)
+                input.splice(indexNum2 - 2, 0, Calculate(Numtonum))
+            }
+
+            if (result[0] === '0') {
+                result.splice(0, 1)
+            } 
+            const joinarr = result.join('')
+            const add = joinarr.replaceAll("+"," + ")
+            const minus = add.replaceAll("-"," - ")
+            const divide = minus.replaceAll("/"," / ")
+            const times = divide.replaceAll("*"," * ")
+            console.log("times", times)
+            const myArray = times.split(" ");
+            console.log("Algorithm to join separated numbers", myArray)
+
+            const equation = myArray
+            const input = []
+            const loopCount = []
+        
+            /*MAIN*/
+            convertArray(equation)
+            for (const [i, v] of input.entries()) {
+                loopCount.push(i)
+                console.log(i)
+                if (v === "-") {
+                    const indexminus = input.indexOf("-")
+                    input[indexminus] = " m"
+                }
+                if (v === "+") {
+                    const indexplus = input.indexOf("+")
+                    input[indexplus] = " p"
+                }
+                if (v === "/") {
+                    const indexdiv = input.indexOf("/")
+                    input[indexdiv] = " / "
+
+                }
+                if (v === "*") {
+                    const indextimes = input.indexOf("*")
+                    input[indextimes] = " * "
+                }
+            }
+            convertEquation()
+
+            const sign = []
+            const list = []
+            for (const [i, v] of input.entries()) {
+                if (v === "/") {
+                    sign.push("/");
+                    list.push(v)
+                    loopCount.push(i)
+                }
+                if (v === "*") {
+                    sign.push("*");
+                    list.push(v)
+                    loopCount.push(i)
+                }
+                if (v === "+") {
+                    sign.push("+");
+                    list.push(v)
+                    loopCount.push(i)
+                }
+                if (v === "-") {
+                    sign.push("-");
+                    list.push(v)
+                    loopCount.push(i)
+                }
+            }
+            for (let i = 0; i < loopCount.length; i++) {
+                const attribute = sign[0]
+                const value = list[0]
+                if (value === attribute) {
+                    const index = input.indexOf(attribute)
+                    simplifyArray(index)
+                }
+                sign.splice(0, 1);
+                list.splice(0, 1);
+            }
+            if (input.length !== 1) {
+                const strtonum = input.join(',')
+                const newarr = strtonum.split(',').map(Number)
+                const editInput = (newarr.reduce((a, b) => a + b)) 
+                result.splice(0, result.length)
+                const text = editInput.toString()
+                const newData = result.push(text)
+                setResult(newData)
+            } else {
+                result.splice(0, result.length)
+                const text = input.toString()
+                const newData = result.push(text)
+                setResult(newData)
+            }        
+        }   
     }
     return (
         <FrameCalculator>
