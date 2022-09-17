@@ -82,7 +82,6 @@ const Calculator = ({ result }) => {
         }
         if (item.key === "equals") {
             result.pop()
-            console.log("(STEP 1)", result)
 
             /*FUNCTIONS*/
             const convertArray = (x) => {
@@ -152,10 +151,7 @@ const Calculator = ({ result }) => {
             const minus = add.replaceAll("-"," - ")
             const divide = minus.replaceAll("/"," / ")
             const times = divide.replaceAll("*"," * ")
-            console.log("times", times)
             const myArray = times.split(" ");
-            console.log("Algorithm to join separated numbers", myArray)
-
             const equation = myArray
             const input = []
             const loopCount = []
@@ -164,7 +160,6 @@ const Calculator = ({ result }) => {
             convertArray(equation)
             for (const [i, v] of input.entries()) {
                 loopCount.push(i)
-                console.log(i)
                 if (v === "-") {
                     const indexminus = input.indexOf("-")
                     input[indexminus] = " m"
